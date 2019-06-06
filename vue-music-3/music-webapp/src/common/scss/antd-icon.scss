@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'iconfont-antd';  /* project id 1151136 */
+  src: url('//at.alicdn.com/t/font_1151136_3cegusnxuu3.eot');
+  src: url('//at.alicdn.com/t/font_1151136_3cegusnxuu3.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1151136_3cegusnxuu3.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1151136_3cegusnxuu3.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1151136_3cegusnxuu3.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1151136_3cegusnxuu3.svg#iconfont') format('svg');
+}
+
+.iconfont-antd {
+  font-family:"iconfont-antd" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1;
+}
+
+.icon-clear:before { content: "\e863"; }
+
+.icon-delete:before { content: "\e7fc" ;}
+
+.icon-down:before { content: "\e7ec" ;}
+
+.icon-left:before { content: "\e7eb" ;}
+
+.icon-user:before { content: "\e7ae" ;}
+
+.icon-music:before { content: "\e61b" ;}
