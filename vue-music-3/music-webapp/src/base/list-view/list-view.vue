@@ -5,7 +5,7 @@
         <h2 class='list-group-title'>{{group.title}}</h2>
         <ul>
           <li v-for='item in group.items' class='item' @click.stop='selectItem(item)'>
-            <img class='avator' :src='item.avator'>
+            <img class='avator' :src='toHttpsURL(item.avator)'>
             <span class='name'>{{item.name}}</span>
           </li>
         </ul>
@@ -27,6 +27,7 @@
 <script>
   import Scroll from 'base/scroll/scroll'
   import {getData} from 'common/js/dom'
+  import {toHttps} from 'common/js/util'
 
   const ANCHOR_HEIGHT = 18
   const SHORTCUT_LIST_PADDING = 20
@@ -151,6 +152,9 @@
       },
       refresh() {
         this.$refs.scroll.refresh()
+      },
+      toHttpsURL(url) {
+        return toHttps(url)
       }
     }
   }

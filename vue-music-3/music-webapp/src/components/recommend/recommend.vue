@@ -6,8 +6,8 @@
             <div class='slider-content' >
               <slider ref='slider'>
                 <div v-for='item in recommends' class='slider-item'>
-                  <a :href='item.linkUrl'>
-                    <img :src='item.picUrl' @load='loadImage'>
+                  <a :href='toHttpsURL(item.linkUrl)'>
+                    <img :src='toHttpsURL(item.picUrl)' @load='loadImage'>
                   </a>
                 </div>
               </slider>
@@ -18,7 +18,7 @@
             <ul>
               <li class='item' v-for='item in discList' @click='selectItem(item)'>
                 <div class='icon'>
-                  <img width='60px' height='60px' v-lazy='item.imgurl'>
+                  <img width='60px' height='60px' v-lazy='toHttpsURL(item.imgurl)'>
                 </div>
                 <div class='text'>
                   <h2 class='name' v-html='item.creator.name'></h2>
@@ -46,6 +46,7 @@
   import Loading from 'base/loading/loading'
   import {mapMutations} from 'vuex'
   import {playlistMixin} from 'common/js/mixin'
+  import {toHttps} from 'common/js/util'
 
   export default {
     mixins: [playlistMixin],
@@ -58,7 +59,6 @@
       this.checkLoad = false
       this._getRecommend()
       this._getDiscList()
-      console.log('true')
     },
     activated() {
       if (!navigator.onLine) {
@@ -102,6 +102,9 @@
             this.$refs.slider && this.$refs.slider.slider.refresh()
           }, 20)
         }
+      },
+      toHttpsURL(url) {
+        return toHttps(url)
       },
       _getRecommend() {
         getRecommend().then((res) => {

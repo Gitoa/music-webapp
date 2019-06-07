@@ -47,13 +47,11 @@ export function getSongsUrl (songs) {
   return new Promise((resolve, reject) => {
     let tryTime = 3
     function request() {
-      console.log(url)
       return axios.post(url, {
         comm: data,
         url_mid: urlMid
       }).then((response) => {
         const res = response.data
-        console.log(res)
         if (res.code === ERR_OK) {
           let urlMid = res.url_mid
           if (urlMid && urlMid.code === ERR_OK) {

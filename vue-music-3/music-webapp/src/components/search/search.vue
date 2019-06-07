@@ -121,7 +121,7 @@
       handlePlaylist(playlist) {
         const bottom = playlist.length > 0 ? '60px' : '0'
         this.$refs.shortcutWrapper.style.bottom = bottom
-        console.log('handle')
+        //console.log('handle')
         this.$refs.scroll.refresh()
         this.$refs.searchResult.style.bottom = bottom
         this.$refs.suggest.refresh()
@@ -130,7 +130,7 @@
         getHotKey().then((res) => {
           if (res.code === ERR_OK) {
             this.hotKey = res.data.hotkey.slice(0, 10)
-            console.log(this.hotKey)
+            //console.log(this.hotKey)
           }
         })
       }

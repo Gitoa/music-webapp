@@ -212,7 +212,7 @@ export default {
   },
 
   stop () { //停止当前行为（transition，将所有transition-property设为当前值，并且将transition-duration设为0ms
-    console.log('stop the scrolling')
+    //console.log('stop the scrolling')
     let mark = this.options.direction
     this.pos = mark === 'Y' ? this._getTranslateY() : this._getTranslateX()
     this.scrollStyle.transitionDuration = '0ms'

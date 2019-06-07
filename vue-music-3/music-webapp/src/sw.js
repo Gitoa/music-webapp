@@ -13,6 +13,7 @@ assetsToCache = assetsToCache.map(path => {
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function(cache) {
+      console.log(assetsToCache)
       return cache.addAll(assetsToCache);
     }).catch(error => {
       console.error(error)

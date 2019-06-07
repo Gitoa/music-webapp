@@ -1,7 +1,5 @@
 export default {
   _touchstart (e) {
-    console.log('_touchstart')
-    console.log(this)
     if (!this.options.scrollable || this.update || this.load) {
       return
     }
@@ -78,7 +76,7 @@ export default {
   },
 
   _touchend (e) {
-    console.log('touchend')
+    //console.log('touchend')
     if (this.update || this.load) {
       return
     }
@@ -160,7 +158,7 @@ export default {
   },
 
   _touchcancel (e) {
-    console.log('_touchcancel')
+    //console.log('_touchcancel')
     this._touchend(e)
   },
 

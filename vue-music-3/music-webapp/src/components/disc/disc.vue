@@ -10,6 +10,7 @@
   import {getSongList} from 'api/recommend'
   import {ERR_OK} from 'api/config'
   import {createSong, isValidMusic, processSongsUrl} from 'common/js/song'
+  import {toHttps} from 'common/js/util'
 
   export default {
     components: {
@@ -35,10 +36,13 @@
         return this.disc.dissname
       },
       imgUrl() {
-        return this.disc.imgurl
+        return this.toHttpsURL(this.disc.imgurl)
       }
     },
     methods: {
+      toHttpsURL(url) {
+        return toHttps(url)
+      },
       _getSongList() {
         if (!this.disc.dissid) {
           this.$router.push('/recommend')
@@ -48,7 +52,6 @@
           if (res.code === ERR_OK) {
             processSongsUrl(this._normalizeSongs(res.cdlist[0].songlist)).then((songs) => {
               this.songs = songs
-              console.log(this.songs)
             })
           }
         })

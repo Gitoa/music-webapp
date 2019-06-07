@@ -155,7 +155,7 @@
         return this.format(this.currentSong.duration)
       },
       audioSrc() {
-        return this.currentSong.url + '&mid=' + this.currentSong.mid
+        return !this.currentSong.url ? '' : this.currentSong.url + '&mid=' + this.currentSong.mid
       },
       bgImgSrc() {
         return this.currentSong.image + '&mid=' + this.currentSong.mid + 'img'
@@ -175,7 +175,7 @@
         if (!newSong.id) {
           return
         }
-        console.log(newSong.url, 'in player')
+        console.log(newSong.url)
         if (newSong.id === oldSong.id) {
           return
         }

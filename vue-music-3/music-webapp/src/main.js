@@ -30,8 +30,6 @@ new Vue({
 
 window.addEventListener('load', () => {
 
-  console.log('onload')
-
   if ('serviceWorker' in navigator) {
 
     console.log('register sw')

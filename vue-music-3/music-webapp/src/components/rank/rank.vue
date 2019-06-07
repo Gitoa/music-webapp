@@ -4,7 +4,7 @@
       <ul>
         <li v-for='(item, index) in topList' class='item' @click='select(item)'>
           <div class='icon'>
-            <img width='100' height='100' v-lazy='item.picUrl'>
+            <img width='100' height='100' v-lazy='toHttpsURL(item.picUrl)'>
           </div>
           <ul class='songList'>
             <li v-for='(song, index) in item.songList' class='song'>
@@ -29,6 +29,7 @@
   import {ERR_OK} from 'api/config'
   import Scroll from 'base/scroll/scroll'
   import {playlistMixin} from 'common/js/mixin'
+  import {toHttps} from 'common/js/util'
   import Loading from 'base/loading/loading'
   import {mapMutations} from 'vuex'
 
@@ -68,7 +69,11 @@
         this.$router.push({
           path: `/rank/${item.id}`
         })
+        console.log(item)
         this.setTopList(item)
+      },
+      toHttpsURL(url) {
+        return toHttps(url)
       },
       _getTopList() {
         getTopList().then((res) => {

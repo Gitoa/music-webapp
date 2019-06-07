@@ -2,6 +2,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const userConfig = require('./config')
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -38,7 +39,21 @@ module.exports = {
             minRatio: 0.8
           })
         )
-      }  
+      }
+      config.plugins.push(
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            warnings: false,
+            compress: {
+              drop_debugger: true,
+              drop_console: true,
+              pure_funcs: ['console.log']
+            },
+          },
+          sourceMap: false,
+          parallel: true,
+        })
+      )
     } else {
       config.devServer = {
         before(app) {

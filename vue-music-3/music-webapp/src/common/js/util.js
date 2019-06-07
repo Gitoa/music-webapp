@@ -105,7 +105,6 @@ export function readFileFirefox(fileBrowser) {
 
 export function getPath(obj) {
   console.log('obj')
-  console.log(Sys)
   let Sys = {}
   let ua = navigator.userAgent.toLowerCase()
   console.log(ua)
@@ -127,4 +126,15 @@ export function getPath(obj) {
     file_url = obj.value
   }
   console.log(file_url)
+}
+
+export function toHttps(httpURL) {
+  if (typeof httpURL !== 'string') {
+    return httpURL
+  }
+  let httpsURL = httpURL.replace(/^http:\/\//, 'https://')
+  if (!/^https:\/\//.test(httpsURL)) {
+    httpsURL = 'https://' + httpsURL
+  }
+  return httpsURL
 }

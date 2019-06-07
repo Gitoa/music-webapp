@@ -10,6 +10,7 @@
   import {ERR_OK} from 'api/config'
   import {createSong, isValidMusic, processSongsUrl} from 'common/js/song'
   import MusicList from 'components/music-list/music-list'
+  import {toHttps} from 'common/js/util'
 
   export default {
     data() {
@@ -32,13 +33,16 @@
         'topList'
       ]),
       imgUrl() {
-        return this.topList.picUrl
+        return this.toHttpsURL(this.topList.picUrl)
       },
       listName() {
         return this.topList.topTitle
       }
     },
     methods: {
+      toHttpsURL(url) {
+        return toHttps(url)
+      },
       _getDetail() {
         if (!this.topList.id) {
           this.$router.push('/rank')
